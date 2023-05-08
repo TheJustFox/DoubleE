@@ -103,10 +103,18 @@ for(val in data)
         element2.appendChild(document.createTextNode(data[val].description));
         box.appendChild(element2);
 
-        var a = document.createElement("a");
+        var a = document.createElement("button");
         //<a href="portfolio.html" target="_blank">See my portfolio</a>
-        a.href = data[val].link;
-        a.innerHTML = "download";
+        
+        a.className = "btn";
+        a.innerHTML = "Download";
+        a.addEventListener('click',(e)=>{
+            if(logged)
+                window.open(data[val].link);
+            else
+                err("you must be loged in to download items!");
+
+        });
         box.appendChild(a);
     }
 }
