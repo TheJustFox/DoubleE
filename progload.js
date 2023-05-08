@@ -57,7 +57,7 @@ onAuthStateChanged(auth, (user) => {
     });
     document.getElementById('profile-container').appendChild(a);
   } else {
-    document.getElementById('user').innerHTML = "Anonumys";
+    document.getElementById('user').innerHTML = "Anonymous";
     logged = false
 
     var a = document.createElement("button");
