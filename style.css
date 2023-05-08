@@ -1,0 +1,141 @@
+body {
+    text-align: center;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    background-color: #1b1b1b;
+    -webkit-text-fill-color: azure;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(161, 161, 161);
+    opacity: 1; /* Firefox */
+}
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(161, 161, 161);
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgb(161, 161, 161);
+}
+
+
+.init {
+    width: 50%;
+}
+
+div.container{
+    margin: auto;
+    background-color: #222222;
+    width: 500px;
+    padding: 0.5em 0.5em 0.5em;
+    border-radius: 15px;
+    margin-bottom: 0.5em;
+    box-shadow: 0 5px 10px rgb(36, 36, 36);
+}
+
+.dark-container {
+    display:inline-block;
+    margin: auto;
+    background-color: #222222;
+    width: 90%;
+    padding: 0.5em 0.5em 0.5em;
+    border-radius: 15px;
+    margin-bottom: 0.5em;
+    box-shadow: 0 5px 10px rgb(17, 17, 17);
+}
+
+a {
+    color: #fff;
+}
+
+
+.search {
+    align-items: center;
+}
+
+.textbox {
+    margin-bottom: 5px;
+    width: 80%;
+    transition-duration: 0.5s;
+    background-color: #333333;
+    height: 28px;
+    padding-left: 10px;
+    text-decoration: none;
+    border-radius: 5px; /*up to date browsers support this, but you can add prefixes if you want*/
+
+    border: 0;
+}
+.textbox:focus {
+    transition-duration: 0.5s;
+    background-color: rgb(27, 27, 27);
+    -webkit-text-fill-color:#929292;
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+}
+.textbox:hover {
+    transition-duration: 0.5s;
+    background-color: rgb(27, 27, 27);
+    -webkit-text-fill-color:#e0e0e0;
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+}
+
+.searchbtn {
+    margin-top: 5px;
+    transition-duration: 0.5s;
+    background-color: #333333;
+    height: 28px;
+    padding-left: 10px;
+    text-decoration: none;
+    border-radius: 5px; /*up to date browsers support this, but you can add prefixes if you want*/
+
+    border: 0;
+}
+
+.searchbtn:hover {
+    transition-duration: 0.5s;
+    background-color: rgb(27, 27, 27);
+    -webkit-text-fill-color:#e0e0e0;
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+}
+
+
+.alert {
+    margin: auto;
+    width: 70%;
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
+  
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.download {
+    align-items: center;
+    margin: auto;
+    width: 70%;
+    padding: 20px;
+    background-color: #36f446;
+    color: white;
+}
+
+.savebtn {
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.3s;
+}
