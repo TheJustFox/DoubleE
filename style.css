@@ -48,9 +48,8 @@ a {
     color: #fff;
 }
 
-
-.search {
-    align-items: center;
+.userclick {
+    text-decoration: none;
 }
 
 .textbox {
@@ -76,7 +75,7 @@ a {
 .textbox:hover {
     transition-duration: 0.5s;
     background-color: rgb(27, 27, 27);
-    -webkit-text-fill-color:#e0e0e0;
+    -webkit-text-fill-color:#969696;
     outline: 0;
     outline-color: transparent;
     outline-style: none;
@@ -84,6 +83,7 @@ a {
 
 .searchbtn {
     margin-top: 5px;
+    margin-bottom: 5px;
     transition-duration: 0.5s;
     background-color: #333333;
     height: 28px;
@@ -138,4 +138,26 @@ a {
     font-size: 22px;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.btn {
+    margin-left: 5px;
+    background-color: #333333;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px; /*up to date browsers support this, but you can add prefixes if you want*/
+
+    border: 0;
+    
+
+    transition-duration: 0.5s;
+}
+
+.btn:hover {
+    transition-duration: 0.5s;
+    background-color: rgb(27, 27, 27);
+    -webkit-text-fill-color:#e0e0e0;
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
 }

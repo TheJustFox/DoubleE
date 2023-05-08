@@ -1,3 +1,88 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+  import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDJmlUJWpDj5lxHPxmNzQQ6lp5NT4Zn8-E",
+    authDomain: "doubleelogins.firebaseapp.com",
+    databaseURL: "https://doubleelogins-default-rtdb.firebaseio.com",
+    projectId: "doubleelogins",
+    storageBucket: "doubleelogins.appspot.com",
+    messagingSenderId: "642743586532",
+    appId: "1:642743586532:web:a88b67169ca28c209fe6f1",
+    measurementId: "G-01H43S2VEC"
+};
+firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth();
+
+const user = auth.currentUser;
+
+var logged = false;
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    
+    const uid = user.uid;
+    var name = firebase.database().ref('users/'+user.uid+'/username')
+    name.on('value', function(snapshot) {
+        document.getElementById('user').innerHTML = "Welcome " +snapshot.val() + '!';
+    });
+    logged = true;
+
+    var a = document.createElement("button");
+    //<a href="portfolio.html" target="_blank">See my portfolio</a>
+    
+    a.className = "btn";
+    a.innerHTML = "log out";
+    a.addEventListener('click',(e)=>{
+        signOut(auth).then(() => {
+            // Sign-out successful.
+          if(logged)
+            location.reload();
+          else
+              alert("you are not loged in");
+          }).catch((error) => {
+            // An error happened.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+       
+               alert(errorMessage);
+          });
+    });
+    document.getElementById('profile-container').appendChild(a);
+  } else {
+    document.getElementById('user').innerHTML = "Anonumys";
+    logged = false
+
+    var a = document.createElement("button");
+    //<a href="portfolio.html" target="_blank">See my portfolio</a>
+    
+    a.className = "btn";
+    a.innerHTML = "register";
+    a.addEventListener('click',(e)=>{
+        window.open("sign-up.html","_self");
+    });
+    document.getElementById('profile-container').appendChild(a);
+
+    var a = document.createElement("button");
+    //<a href="portfolio.html" target="_blank">See my portfolio</a>
+    
+    a.className = "btn";
+    a.innerHTML = "log in";
+    a.addEventListener('click',(e)=>{
+        window.open("sign-in.html","_self");
+    });
+    document.getElementById('profile-container').appendChild(a);
+  }
+});
+
+
 import data from './programs.json' assert { type: 'json' };
 
 
@@ -96,10 +181,13 @@ function find() {
             
             if(data[val].id == id) exists = true;
         }
-
-        if(exists)
-            download("Name : " + FindData(id).name,"Description : " + FindData(id).description, FindData(id).link);
+        if(logged)
+            if(exists)
+                download("Name : " + FindData(id).name,"Description : " + FindData(id).description, FindData(id).link);
+            else
+                err("unable to find item by id "+id + ".");
         else
-            err("unable to find item by id "+id + ".");
+            err("you must be loged in to download items!");
+        
     }
 }
